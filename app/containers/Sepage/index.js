@@ -27,7 +27,7 @@ export class Sepage extends React.Component {
     const footer = (
       <div className="row justify-content-center">
         <div className="col-md-8 col-lg-6">
-          <SearchBar text={text} onSearchClick={onSearchClick} />
+          <SearchBar multiline text={text} onSearchClick={onSearchClick} />
         </div>
       </div>
     );
