@@ -34,8 +34,8 @@ export default function App() {
         )}
         />
         <Route exact activeClassName="active-navbar" path="/features" component={HomePage} />
-        <Route exact activeClassName="active-navbar" path="/predict" component={PredictPage} />
-        <Route exact activeClassName="active-navbar" path="/search" component={SearchPage} />
+        <Route exact activeClassName="active-navbar" path="/search-by-movie" component={PredictPage} />
+        <Route exact activeClassName="active-navbar" path="/search-by-plot" component={SearchPage} />
         <Route exact activeClassName="active-navbar" path="/history" component={HistoriesPage} />
         <Route exact activeClassName="active-navbar" path="/movie/:movieId" component={MovieDetailPage} />
         <Route component={NotFoundPage} />

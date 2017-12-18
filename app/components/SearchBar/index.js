@@ -17,7 +17,7 @@ class SearchBar extends React.PureComponent { // eslint-disable-line react/prefe
     this.onChangeSearchText = this.onChangeSearchText.bind(this);
     this.moveCaretAtEnd = this.moveCaretAtEnd.bind(this);
     this.onSearchClick = this.onSearchClick.bind(this);
-    this.onChangeDebounce = debounce(value => this.props.onChangeSearchText(value), 800);
+    this.onChangeDebounce = debounce((value) => this.props.onChangeSearchText(value), 800);
   }
 
   onChangeSearchText(e) {
@@ -29,9 +29,9 @@ class SearchBar extends React.PureComponent { // eslint-disable-line react/prefe
   }
 
   moveCaretAtEnd(e) {
-    let temp_value = e.target.value;
+    const temp_value = e.target.value;
     e.target.value = '';
-    e.target.value = temp_value
+    e.target.value = temp_value;
   }
 
   render() {
