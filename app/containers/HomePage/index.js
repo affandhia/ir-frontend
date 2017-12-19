@@ -36,7 +36,7 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
             <div className="col-md-3">
               <div className="container">
                 <div className="icon"><span><FaSearch /></span></div>
-                <div className="content">Search any movies as you like. We have over 1000+ movies in our database.</div>
+                <div className="content">Search any movies as you like. We have over 45000+ movies in our database.</div>
               </div>
               <div className="container">
                 <div className="icon"><span><FaList/></span></div>
@@ -46,11 +46,11 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
             <div className="col-md-3">
               <div className="container">
                 <div className="icon"><span><FaStar /></span></div>
-                <div className="content">Predict the rating of your favorite movies. You can compare the actual rating and predicted rating or you can predict movies that have not released yet.</div>
+                <div className="content">Predict the genres of your favorite movies. You can compare the actual genre and predicted genre .</div>
               </div>
               <div className="container">
                 <div className="icon"><span><FaHistory /></span></div>
-                <div className="content">Keeps your prediction of a movie. You can show it to your friend or colleague.</div>
+                <div className="content">You can predict genre of your plot.</div>
               </div>
             </div>
           </div>
