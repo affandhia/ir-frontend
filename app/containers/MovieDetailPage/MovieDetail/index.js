@@ -139,9 +139,9 @@ class MovieDetail extends React.Component {
                         </h3>
                       </div>
                       <div className="col-6">
-                        <div className="col-12">Predicted Genre</div>
-                        <h3 className="col-12 predicted-rating">
-                          {prediction.rating_predicted}
+                        <div className="col-12">Predicted Genres</div>
+                        <h3 className="col-12 predicted-rating display-linebreak">
+                          {prediction && prediction.predicted_genre.join('\n')}
                         </h3>
                       </div>
                     </div>

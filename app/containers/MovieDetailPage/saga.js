@@ -26,7 +26,7 @@ export function* getMovieDetails(action) {
   }
 }
 export function* postPredictMovie(action) {
-  const requestURL = `http://localhost:8000/api/v1/predict/`;
+  const requestURL = `http://localhost:8000/api/v1/predict_genre_by_movie/`;
   const movie = yield select(makeSelectMovieDetails());
 
   try {
