@@ -11,49 +11,53 @@ import {
   GET_MOVIE_PREDICTION_REQUESTED,
   GET_MOVIE_PREDICTION_SUCCESS,
   GET_MOVIE_PREDICTION_ERROR,
+  CLEAR_DATA,
 } from './constants';
 
 export function getMovieDetails(id) {
   return {
     type: GET_MOVIE_REQUESTED,
     payload: {
-      id
-    }
-  }
+      id,
+    },
+  };
+}
+export function clearData() {
+  return {
+    type: CLEAR_DATA,
+  };
 }
 
 export function receiveMovieDetailsSuccess(payload) {
   return {
     type: GET_MOVIE_SUCCESS,
     payload,
-  }
+  };
 }
 
 export function receiveMovieDetailsError(error) {
   return {
     type: GET_MOVIE_ERROR,
-    payload: {error},
-  }
+    payload: { error },
+  };
 }
-
 
 export function getPredictMovie() {
   return {
     type: GET_MOVIE_PREDICTION_REQUESTED,
-  }
+  };
 }
-
 
 export function receivePredictMovieSuccess(payload) {
   return {
     type: GET_MOVIE_PREDICTION_SUCCESS,
     payload,
-  }
+  };
 }
 
 export function receivePredictMovieError(error) {
   return {
     type: GET_MOVIE_PREDICTION_ERROR,
-    payload: {error},
-  }
+    payload: { error },
+  };
 }

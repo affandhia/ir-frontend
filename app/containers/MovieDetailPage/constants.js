@@ -10,5 +10,6 @@ export const GET_MOVIE_ERROR = 'app/MovieDetailPage/GET_MOVIE_ERROR';
 export const GET_MOVIE_PREDICTION_REQUESTED = 'app/MovieDetailPage/GET_MOVIE_PREDICTION_REQUESTED';
 export const GET_MOVIE_PREDICTION_SUCCESS = 'app/MovieDetailPage/GET_MOVIE_PREDICTION_SUCCESS';
 export const GET_MOVIE_PREDICTION_ERROR = 'app/MovieDetailPage/GET_MOVIE_PREDICTION_ERROR';
+export const CLEAR_DATA = 'app/MovieDetailPage/CLEAR_DATA';
 
 export const MOVIE_LOADING = 'app/MovieDetailPage/MOVIE_LOADING';

@@ -13,12 +13,13 @@ import {
   GET_MOVIE_PREDICTION_SUCCESS,
   GET_MOVIE_PREDICTION_ERROR,
   MOVIE_LOADING,
+  CLEAR_DATA,
 } from './constants';
 
 const initialState = fromJS({
   movie: null,
-  loading: "",
-  loadingPredict: "",
+  loading: '',
+  loadingPredict: '',
   prediction: null,
 });
 
@@ -31,12 +32,12 @@ function movieDetailPageReducer(state = initialState, action) {
       });
     case GET_MOVIE_SUCCESS:
       return state.merge({
-        loading: "",
-        movie: action.payload
+        loading: '',
+        movie: action.payload,
       });
     case GET_MOVIE_ERROR:
       return state.merge({
-        loading: "",
+        loading: '',
         movie: null,
       });
     case GET_MOVIE_PREDICTION_REQUESTED:
@@ -46,14 +47,16 @@ function movieDetailPageReducer(state = initialState, action) {
       });
     case GET_MOVIE_PREDICTION_SUCCESS:
       return state.merge({
-        loadingPredict: "",
-        prediction: action.payload
+        loadingPredict: '',
+        prediction: action.payload,
       });
     case GET_MOVIE_PREDICTION_ERROR:
       return state.merge({
-        loadingPredict: "",
+        loadingPredict: '',
         prediction: null,
       });
+    case CLEAR_DATA:
+      return initialState;
     default:
       return state;
   }

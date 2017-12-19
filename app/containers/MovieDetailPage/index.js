@@ -12,19 +12,20 @@ import { compose } from 'redux';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import makeSelectMovieDetailPage, {
-  makeSelectMovieDetails,
-} from './selectors';
+import makeSelectMovieDetailPage, { makeSelectMovieDetails } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import { getMovieDetails, getPredictMovie } from './actions';
+import { getMovieDetails, getPredictMovie, clearData } from './actions';
 
 import MovieDetail from './MovieDetail';
 
 export class MovieDetailPage extends React.Component {
   // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
-    const { match, onGetMovieDetails } = this.props;
+    const { match, onGetMovieDetails, onClearData, movie } = this.props;
+    if (movie && movie.id !== match.params.movieId) {
+      onClearData();
+    }
     onGetMovieDetails(match.params.movieId);
   }
 
@@ -34,7 +35,11 @@ export class MovieDetailPage extends React.Component {
 }
 
 MovieDetailPage.propTypes = {
+  moviedetailpage: PropTypes.shape(),
+  movie: PropTypes.shape(),
   dispatch: PropTypes.func.isRequired,
+  onGetMovieDetails: PropTypes.func,
+  onClearData: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -47,6 +52,7 @@ function mapDispatchToProps(dispatch) {
     dispatch,
     onGetMovieDetails: id => dispatch(getMovieDetails(id)),
     onPredictMovie: id => dispatch(getPredictMovie(id)),
+    onClearData: () => dispatch(clearData()),
   };
 }
 
