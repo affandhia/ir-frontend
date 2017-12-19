@@ -67,10 +67,7 @@ class SearchBar extends React.PureComponent {
             type="button"
             onClick={this.onSearchClick}
           >
-            SEARCH
-          </MarginButton>
-          <MarginButton className="btn btn-outline-light" type="button">
-            BY MOVIE
+            PREDICT
           </MarginButton>
         </div>
       </div>

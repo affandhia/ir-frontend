@@ -34,7 +34,6 @@ class MovieList extends React.Component {
         </EmptyHeader>
       );
     };
-
     return (
       <Wrapper className="container-fluid">
         <div className="container">

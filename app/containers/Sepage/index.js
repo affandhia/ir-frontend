@@ -5,12 +5,12 @@
  */
 
 import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-import {} from 'react-router-dom';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
@@ -28,6 +28,25 @@ export class Sepage extends React.Component {
   render() {
     const { text, onPredictGenre, onChangeSearchText, sepage } = this.props;
     const { loading, error, movies, prediction } = sepage;
+    const StyledDiv = styled.div`
+      color: aliceblue;
+      margin-top: 3em;
+
+      .genres {
+        color: yellow;
+      }
+
+      .display-linebreak {
+        white-space: pre-line;
+      }
+    `;
+
+    const SuggestionHeaderCont = styled.div`
+      background: #d9dee0;
+      color: #434648;
+      padding-top: 2em;
+      padding-bottom: 2em;
+    `;
     const footer = (
       <div className="row justify-content-center">
         <div className="col-md-8 col-lg-6">
@@ -38,10 +57,12 @@ export class Sepage extends React.Component {
             onSearchClick={onPredictGenre}
           />
         </div>
-        <div className="col-12">
-          <h2>Predicted Genre</h2>
-          {prediction && prediction.join("\n")}
-        </div>
+        <StyledDiv className="col-12 text-center">
+          <h2>Predicted Genres</h2>
+          <p className="genres display-linebreak">
+            {prediction ? prediction.join('\n') : 'Please click "Predict"'}
+          </p>
+        </StyledDiv>
       </div>
     );
     return (
@@ -55,6 +76,13 @@ export class Sepage extends React.Component {
             <Hero footer={footer} />
           </section>
           <section id="movie-list">
+            <SuggestionHeaderCont className="container-fluid">
+              <div className="container">
+                <div className="col text-center">
+                  <h1>You Might Like</h1>
+                </div>
+              </div>
+            </SuggestionHeaderCont>
             <MovieList
               loading={loading}
               error={error}

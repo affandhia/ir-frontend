@@ -24,19 +24,19 @@ function sepageReducer(state = initialState, action) {
   switch (action.type) {
     case GET_GENRE_PREDICTION_REQUESTED:
       return state.merge({
-        loadingPredict: 'Meminta prediksi genre...',
+        loading: 'Meminta prediksi genre...',
         prediction: null,
       });
     case GET_GENRE_PREDICTION_SUCCESS:
       return state.merge({
-        loadingPredict: '',
+        loading: '',
         error: '',
         prediction: action.payload.predicted_genre,
         movies: action.payload.recommended_movies,
       });
     case GET_GENRE_PREDICTION_ERROR:
       return state.merge({
-        loadingPredict: '',
+        loading: '',
         error: action.payload.error,
         prediction: null,
       });

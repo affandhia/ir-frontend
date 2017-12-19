@@ -155,7 +155,7 @@ class MovieDetail extends React.Component {
                       disabled={!!prediction}
                     >
                       {prediction
-                        ? `Elapsed time ${prediction.time_elapsed} second(s)`
+                        ? `Elapsed time ${prediction.elapsed_time} second(s)`
                         : 'Predict Now'}
                     </button>
                   </div>
