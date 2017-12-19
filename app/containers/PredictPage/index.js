@@ -46,6 +46,7 @@ export class PredictPage extends React.Component {
             text={text}
             onSearchClick={onSearchClick}
             onChangeSearchText={onChangeSearchBox}
+            debounced
           />
         </div>
       </div>

@@ -27,7 +27,7 @@ export class Sepage extends React.Component {
   // eslint-disable-line react/prefer-stateless-function
   render() {
     const { text, onPredictGenre, onChangeSearchText, sepage } = this.props;
-    const { loading, error, movies } = sepage;
+    const { loading, error, movies, prediction } = sepage;
     const footer = (
       <div className="row justify-content-center">
         <div className="col-md-8 col-lg-6">
@@ -37,6 +37,10 @@ export class Sepage extends React.Component {
             onChangeSearchText={onChangeSearchText}
             onSearchClick={onPredictGenre}
           />
+        </div>
+        <div className="col-12">
+          <h2>Predicted Genre</h2>
+          {prediction && prediction.join("\n")}
         </div>
       </div>
     );

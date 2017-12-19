@@ -24,7 +24,11 @@ class SearchBar extends React.PureComponent {
   }
 
   onChangeSearchText(e) {
-    this.onChangeDebounce(e.target.value);
+    if (this.props.debounced) {
+      this.onChangeDebounce(e.target.value);
+    } else {
+      this.props.onChangeSearchText(e.target.value);
+    }
   }
 
   onSearchClick() {
@@ -101,12 +105,14 @@ class SearchBar extends React.PureComponent {
 SearchBar.propTypes = {
   text: PropType.string,
   multiline: PropType.bool,
+  debounced: PropType.bool,
   onSearchClick: PropType.func,
   onChangeSearchText: PropType.func,
 };
 
 SearchBar.defaultProps = {
   text: '',
+  debounced: false,
   multiline: false,
   onSearchClick: null,
   onChangeSearchText: null,

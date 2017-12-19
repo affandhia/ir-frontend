@@ -25,7 +25,6 @@ export function* postPredictGenre(action) {
         plot: text,
       }),
     });
-
     if (response.data.status === 'error') {
       yield put(receivePredictGenreError(response.data.message));
     } else {
