@@ -5,18 +5,19 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import MovieItem from 'containers/PredictPage/MovieItem';
 import LoadingIndicator from 'components/LoadingIndicator';
 import styled from 'styled-components';
-import {NOT_FOUND_ERROR, MOVIE_LIST_LOADING} from '../constants';
+import { NOT_FOUND_ERROR, MOVIE_LIST_LOADING } from '../constants';
 
-
-class MovieList extends React.Component { // eslint-disable-line react/prefer-stateless-function
+class MovieList extends React.Component {
+  // eslint-disable-line react/prefer-stateless-function
   render() {
-    const { movies, error, loading } = this.props;
+    const { movies, error, loading, emptyMsg, noResultMsg } = this.props;
     const Wrapper = styled.div`
-      background-color: #EDF2F4;
-      
+      background-color: #edf2f4;
+
       & .container {
         padding-top: 1em;
         padding-bottom: 1em;
@@ -24,22 +25,45 @@ class MovieList extends React.Component { // eslint-disable-line react/prefer-st
     `;
 
     const EmptyHeader = styled.h2`
-      opacity: .4;
+      opacity: 0.4;
     `;
     const Blank = () => {
       return (
-        <EmptyHeader className="text-center">{error === NOT_FOUND_ERROR ? "Oops... Film Tidak Ditemukan :(" : "Silahkan Ketik Judul Film"}</EmptyHeader>
-      )
+        <EmptyHeader className="text-center">
+          {error === NOT_FOUND_ERROR ? noResultMsg : emptyMsg}
+        </EmptyHeader>
+      );
     };
 
     return (
       <Wrapper className="container-fluid">
         <div className="container">
-          {loading === MOVIE_LIST_LOADING ? <LoadingIndicator /> : (movies.length < 1 ? <Blank /> : movies.map((movie) => <MovieItem data={movie} key={movie.imdbID}/>))}
+          {loading === MOVIE_LIST_LOADING ? (
+            <LoadingIndicator />
+          ) : movies.length < 1 ? (
+            <Blank />
+          ) : (
+            movies.map((movie) => <MovieItem data={movie} key={movie.imdbID} />)
+          )}
         </div>
       </Wrapper>
     );
   }
 }
+
+MovieList.defaultProps = {
+  movies: '',
+  error: '',
+  loading: '',
+  emptyMsg: 'Silahkan Ketik Judul Film',
+  noResultMsg: 'Oops... Film Tidak Ditemukan :(',
+};
+MovieList.propTypes = {
+  movies: PropTypes.array,
+  error: PropTypes.string,
+  loading: PropTypes.string,
+  emptyMsg: PropTypes.string,
+  noResultMsg: PropTypes.string,
+};
 
 export default MovieList;

@@ -10,21 +10,24 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
+import {} from 'react-router-dom';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import { makeSelectSepage, makeSelectText } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import { changeSearchBox } from './actions';
+import { changeSearchBox, getPredictGenre } from './actions';
 
 import Hero from 'components/Hero/Loadable';
 import SearchBar from 'components/SearchBar';
+import MovieList from 'containers/PredictPage/MovieList';
 
 export class Sepage extends React.Component {
   // eslint-disable-line react/prefer-stateless-function
   render() {
-    const { text, onChangeSearchText } = this.props;
+    const { text, onChangeSearchText, sepage, onPredictGenre } = this.props;
+    const { loading, error, movies } = sepage;
     const footer = (
       <div className="row justify-content-center">
         <div className="col-md-8 col-lg-6">
@@ -32,7 +35,7 @@ export class Sepage extends React.Component {
             multiline
             text={text}
             onChangeSearchText={onChangeSearchText}
-            onSearchClick={() => null}
+            onSearchClick={onPredictGenre}
           />
         </div>
       </div>
@@ -47,6 +50,15 @@ export class Sepage extends React.Component {
           <section id="hero">
             <Hero footer={footer} />
           </section>
+          <section id="movie-list">
+            <MovieList
+              loading={loading}
+              error={error}
+              movies={movies}
+              emptyMsg="Silahkan tulis Plot film"
+              noResultMsg="Tidak ada film yang sejenis"
+            />
+          </section>
         </article>
       </div>
     );
@@ -54,9 +66,11 @@ export class Sepage extends React.Component {
 }
 
 Sepage.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  sepage: PropTypes.shape(),
   text: PropTypes.string,
+  dispatch: PropTypes.func.isRequired,
   onChangeSearchText: PropTypes.func,
+  onPredictGenre: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -67,7 +81,8 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
-    onChangeSearchText: text => dispatch(changeSearchBox(text)),
+    onChangeSearchText: (text) => dispatch(changeSearchBox(text)),
+    onPredictGenre: () => dispatch(getPredictGenre()),
   };
 }
 
