@@ -9,8 +9,6 @@ import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 import Vibrant from 'node-vibrant';
 import get from 'lodash/get';
-import FaStar from 'react-icons/lib/fa/star';
-import FaStarOutline from 'react-icons/lib/fa/star-o';
 
 import Hero from 'components/Hero/Loadable';
 import LoadingIndicator from 'components/LoadingIndicator';
