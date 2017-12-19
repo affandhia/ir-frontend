@@ -4,12 +4,11 @@
  *
  */
 
-import {
-  DEFAULT_ACTION,
-} from './constants';
+import { CHANGE_SEARCHBOX } from './constants';
 
-export function defaultAction() {
+export function changeSearchBox(text) {
   return {
-    type: DEFAULT_ACTION,
+    type: CHANGE_SEARCHBOX,
+    payload: { text },
   };
 }

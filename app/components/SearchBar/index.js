@@ -54,7 +54,8 @@ class SearchBar extends React.PureComponent {
               autoFocus
               onFocus={this.moveCaretAtEnd}
               onChange={this.onChangeSearchText}
-            />
+              defaultValue={this.props.text}
+            ></textarea>
           </div>
         </div>
         <div className="col-12 text-center">

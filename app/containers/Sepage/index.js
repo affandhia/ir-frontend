@@ -13,9 +13,10 @@ import { compose } from 'redux';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import makeSelectSepage from './selectors';
+import { makeSelectSepage, makeSelectText } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
+import { changeSearchBox } from './actions';
 
 import Hero from 'components/Hero/Loadable';
 import SearchBar from 'components/SearchBar';
@@ -23,11 +24,16 @@ import SearchBar from 'components/SearchBar';
 export class Sepage extends React.Component {
   // eslint-disable-line react/prefer-stateless-function
   render() {
-    const { text, onSearchClick } = this.props;
+    const { text, onChangeSearchText } = this.props;
     const footer = (
       <div className="row justify-content-center">
         <div className="col-md-8 col-lg-6">
-          <SearchBar multiline text={text} onSearchClick={onSearchClick} />
+          <SearchBar
+            multiline
+            text={text}
+            onChangeSearchText={onChangeSearchText}
+            onSearchClick={() => null}
+          />
         </div>
       </div>
     );
@@ -49,15 +55,19 @@ export class Sepage extends React.Component {
 
 Sepage.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  text: PropTypes.string,
+  onChangeSearchText: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
   sepage: makeSelectSepage(),
+  text: makeSelectText(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    onChangeSearchText: text => dispatch(changeSearchBox(text)),
   };
 }
 

@@ -5,16 +5,20 @@
  */
 
 import { fromJS } from 'immutable';
-import {
-  DEFAULT_ACTION,
-} from './constants';
+import { CHANGE_SEARCHBOX } from './constants';
 
-const initialState = fromJS({});
+const initialState = fromJS({
+  movies: [],
+  text: '',
+  error: '',
+  loading: '',
+  prediction: null,
+});
 
 function sepageReducer(state = initialState, action) {
   switch (action.type) {
-    case DEFAULT_ACTION:
-      return state;
+    case CHANGE_SEARCHBOX:
+      return state.set('text', action.payload.text);
     default:
       return state;
   }
