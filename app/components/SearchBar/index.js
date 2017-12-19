@@ -18,7 +18,7 @@ class SearchBar extends React.PureComponent {
     this.moveCaretAtEnd = this.moveCaretAtEnd.bind(this);
     this.onSearchClick = this.onSearchClick.bind(this);
     this.onChangeDebounce = debounce(
-      value => this.props.onChangeSearchText(value),
+      (value) => this.props.onChangeSearchText(value),
       800,
     );
   }
@@ -55,7 +55,7 @@ class SearchBar extends React.PureComponent {
               onFocus={this.moveCaretAtEnd}
               onChange={this.onChangeSearchText}
               defaultValue={this.props.text}
-            ></textarea>
+            />
           </div>
         </div>
         <div className="col-12 text-center">
