@@ -11,7 +11,6 @@ const Navbar = () => (
         <Link className="nav-link" to="/features">features</Link>
         <Link className="nav-link" to="/search-by-movie">search by movie</Link>
         <Link className="nav-link" to="/search-by-plot">search by plot</Link>
-        <Link className="nav-link" to="/history">history</Link>
       </div>
     </div>
   </nav>

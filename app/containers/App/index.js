@@ -18,7 +18,6 @@ import Layout from '../../components/Layout';
 import HomePage from '../HomePage/Loadable';
 import NotFoundPage from '../NotFoundPage/Loadable';
 import PredictPage from '../PredictPage/Loadable';
-import HistoriesPage from '../HistoriesPage/Loadable';
 import MovieDetailPage from '../MovieDetailPage';
 import SearchPage from '../Sepage';
 
@@ -36,7 +35,6 @@ export default function App() {
         <Route exact activeClassName="active-navbar" path="/features" component={HomePage} />
         <Route exact activeClassName="active-navbar" path="/search-by-movie" component={PredictPage} />
         <Route exact activeClassName="active-navbar" path="/search-by-plot" component={SearchPage} />
-        <Route exact activeClassName="active-navbar" path="/history" component={HistoriesPage} />
         <Route exact activeClassName="active-navbar" path="/movie/:movieId" component={MovieDetailPage} />
         <Route component={NotFoundPage} />
       </Switch>
