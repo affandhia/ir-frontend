@@ -26,7 +26,7 @@ import MovieList from 'containers/PredictPage/MovieList';
 export class Sepage extends React.Component {
   // eslint-disable-line react/prefer-stateless-function
   render() {
-    const { text, onChangeSearchText, sepage, onPredictGenre } = this.props;
+    const { text, onPredictGenre, onChangeSearchText, sepage } = this.props;
     const { loading, error, movies } = sepage;
     const footer = (
       <div className="row justify-content-center">
@@ -81,8 +81,8 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
-    onChangeSearchText: (text) => dispatch(changeSearchBox(text)),
     onPredictGenre: () => dispatch(getPredictGenre()),
+    onChangeSearchText: (text) => dispatch(changeSearchBox(text)),
   };
 }
 

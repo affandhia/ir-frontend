@@ -14,7 +14,6 @@ import request from 'utils/request';
 export function* postPredictGenre(action) {
   const requestURL = 'http://localhost:8000/api/v1/predict_genre_by_plot/';
   const text = yield select(makeSelectText());
-
   try {
     const response = yield call(request, requestURL, {
       method: 'POST',
@@ -22,11 +21,16 @@ export function* postPredictGenre(action) {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: {
+      body: JSON.stringify({
         plot: text,
-      },
+      }),
     });
-    yield put(receivePredictGenreSuccess(response.data));
+
+    if (response.data.status === 'error') {
+      yield put(receivePredictGenreError(response.data.message));
+    } else {
+      yield put(receivePredictGenreSuccess(response.data));
+    }
   } catch (err) {
     yield put(receivePredictGenreError(err));
   }

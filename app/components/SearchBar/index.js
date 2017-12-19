@@ -28,7 +28,7 @@ class SearchBar extends React.PureComponent {
   }
 
   onSearchClick() {
-    this.onChangeDebounce(this.props.text);
+    this.props.onSearchClick();
   }
 
   moveCaretAtEnd(e) {
@@ -50,7 +50,6 @@ class SearchBar extends React.PureComponent {
               id="exampleFormControlTextarea1"
               rows="3"
               ref={(input) => (this.input = input)}
-              onClick={this.onSearchClick}
               autoFocus
               onFocus={this.moveCaretAtEnd}
               onChange={this.onChangeSearchText}
@@ -59,14 +58,14 @@ class SearchBar extends React.PureComponent {
           </div>
         </div>
         <div className="col-12 text-center">
-          <MarginButton className="btn btn-danger" type="button">
-            SEARCH
-          </MarginButton>
           <MarginButton
-            className="btn btn-outline-light"
+            className="btn btn-danger"
             type="button"
             onClick={this.onSearchClick}
           >
+            SEARCH
+          </MarginButton>
+          <MarginButton className="btn btn-outline-light" type="button">
             BY MOVIE
           </MarginButton>
         </div>
